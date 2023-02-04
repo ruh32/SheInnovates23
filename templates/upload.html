@@ -37,8 +37,9 @@
   Upload your syllabi! &nbsp (note: must be in pdf or docx format)
 </h1>
 <div class="blog">
-  <form>
-    <input type = "file" name = "upload" accept = "image/*" />
+    <form action = "" method = "POST" enctype = "multipart/form-data">
+        <input type = "file" name = "upload" multiple accept = "image/*, .pdf, .docx"/>
+    <input type = "submit"/>
  </form>
 </div>
 
