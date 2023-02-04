@@ -127,3 +127,8 @@ body {
   .custom-file-upload input{
     font-size: large;
   }
+
+button{
+    font-size: large;
+    background-color:#bfe3b4;
+}

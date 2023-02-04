@@ -19,17 +19,21 @@
                 </ul>
               </div>
               <div class="topnav">
-                    <input type="text" placeholder="Search..">
+                <div class="search-container">
+                  <form action="/action_page.php">
+                      <input type="text" placeholder="Search.." name="search">
+                      <button type="submit"><i class="fa fa-search"><img src="https://cdn-icons-png.flaticon.com/512/3917/3917754.png"></i></button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      
       </header>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="sheInnovates.css" rel="stylesheet" type="text/css" />
+    <link href="upload.css" rel="stylesheet" type="text/css" />
     <STYLE>A {text-decoration: none;} </STYLE>
 </head>
 <br><br><br><br><br><br><br><br>
@@ -39,9 +43,11 @@
 <div class="blog">
     <form action = "" method = "POST" enctype = "multipart/form-data">
         <input type = "file" name = "upload" multiple accept = "image/*, .pdf, .docx"/>
-    <input type = "submit"/>
- </form>
+    </form>
+    <br><br>
+    <form action="display.html"> 
+      <button>submit</button>
+    </form>
 </div>
-
 </body>
 </html>
