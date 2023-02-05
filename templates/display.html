@@ -5,16 +5,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="display.css" rel="stylesheet" type="text/css" />
+  <link href="static/CSS/display.css" rel="stylesheet" type="text/css" />
   <STYLE>A {text-decoration: none;} </STYLE>
   </head>
   <body>
-<h1 style="text-align: center; background-color: #bfe3b4; margin: -7px;">Syllabi</h1>
-    </header>
-    <div style="float: left; width: 0px; height: 100px; position: relative" > 
+  <h1 style="text-align: center; background-color: #bfe3b4; margin: -7px;"> Syllabi </h1><br>
+    <div style="float: left; width: 0px; height: 100px; position: relative" >
     </div>
-      <div style="float: right; clear: right;"><iframe src="realResumeRUCHI.pdf" 
-        width="816" height="1056" scrolling="no" frameborder = "0" ></iframe> 
+      <div style="float: right; clear: right;"><iframe src={{url_for('static', filename='/result.pdf')}}
+        width="816" height="1056" scrolling="no" frameborder = "0" ></iframe>
       </div>
     <form action="upload.html"> <button class="button" >Reupload</button> <br><br> </form>
     yeah dude, ur schedule is bad.  <br><br>
@@ -24,21 +23,28 @@
   <div class="form-popup" id="myForm">
   <form action="/action_page.php" class="form-container">
     <h1>Add Assignments</h1>
+      <form action="" method ="post">
+      <p>
+          {{form.date.label}}<br>
+          {{form.date(size=30)}}
+      </p>
+        <p>
+          {{form.professor.label}}<br>
+          {{form.professor(size=30)}}
+      </p>
+        <p>
+          {{form.name.label}}<br>
+          {{form.name(size=30)}}
+      </p>
+        <p>
+          {{form.description.label}}<br>
+          {{form.description(size=30)}}
+      </p>
+          <p>
+          {{form.submit()}}<br>
+      </p>
+  </form>
 
-    <label for="psw"><b>Date Due</b></label>
-    <input type="password" placeholder="Enter Due Date" name="due" required>
-
-    <label for="email"><b>Professor/Class</b></label>
-    <input type="text" placeholder="Enter Professor/Class" name="professor" required>
-
-    <label for="email"><b>Name of Assignment</b></label>
-    <input type="text" placeholder="Name of Assignment" name="professor" required>
-
-    <label for="email"><b>Any Description</b></label>
-    <input type="text" placeholder="Description" name="professor" required>
-
-    <button type="submit" class="btn">Login</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
 
@@ -47,14 +53,50 @@
         <button class="button">looks good!</button>
       </form>
     </div>
+    <table border = "1">
+        {% for key,value in result.items() %}
+        <tr>
+          <th>
+            {{key}}
+          </th>
+          <td>
+              {{value}}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
   </body>
     <script>
+    // getting the data from the add assignments tab
+    var your_data = {
+        'dueDate' = '';
+        'prof' = '';
+        'name' = '';
+        'descrip' = '';
+    }
+
+    function formData()
+    {
+      your_data['dueDate'] = document.getElementById("due").value;
+      your_data['prof']= document.getElementById("prof").value;
+      your_data['name']= document.getElementById("name").value;
+      your_data['descrip'] = document.getElementById("textboxid").value;
+      const s = JSON.stringify(your_data);
+      console.log(s);
+      window.alert(s)
+        $.ajax({
+            type:"POST",
+            contentType: "application/json",
+            data: JSON.stringify(s)});
+      document.getElementById("myForm").style.display = "none";
+    }
+
     // Get the button
     let mybutton = document.getElementById("myBtn");
-    
-    // When the user scrolls down 20px from the top of the document, show the button
+
+    //When the user scrolls down 20px from the top of the document, show the button
     window.onscroll = function() {scrollFunction()};
-    
+
     function scrollFunction() {
       if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         mybutton.style.display = "block";
@@ -62,7 +104,7 @@
         mybutton.style.display = "none";
       }
     }
-    
+
     // When the user clicks on the button, scroll to the top of the document
     function topFunction() {
       document.body.scrollTop = 0;
