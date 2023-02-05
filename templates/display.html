@@ -8,65 +8,7 @@
   <link href="static/CSS/display.css" rel="stylesheet" type="text/css" />
   <STYLE>A {text-decoration: none;} </STYLE>
   </head>
-  <body>
-  <h1 style="text-align: center; background-color: #bfe3b4; margin: -7px;"> Syllabi </h1><br>
-    <div style="float: left; width: 0px; height: 100px; position: relative" >
-    </div>
-      <div style="float: right; clear: right;"><iframe src={{url_for('static', filename='/result.pdf')}}
-        width="816" height="1056" scrolling="no" frameborder = "0" ></iframe>
-      </div>
-    <form action="upload.html"> <button class="button" >Reupload</button> <br><br> </form>
-    yeah dude, ur schedule is bad.  <br><br>
-
-    <button class="open-button" onclick="openForm()">Add assignments</button>
-
-  <div class="form-popup" id="myForm">
-  <form action="/action_page.php" class="form-container">
-    <h1>Add Assignments</h1>
-      <form action="" method ="post">
-      <p>
-          {{form.date.label}}<br>
-          {{form.date(size=30)}}
-      </p>
-        <p>
-          {{form.professor.label}}<br>
-          {{form.professor(size=30)}}
-      </p>
-        <p>
-          {{form.name.label}}<br>
-          {{form.name(size=30)}}
-      </p>
-        <p>
-          {{form.description.label}}<br>
-          {{form.description(size=30)}}
-      </p>
-          <p>
-          {{form.submit()}}<br>
-      </p>
-  </form>
-
-  </form>
-</div>
-
-    <div style="position:absolute; bottom:0px">
-      <form action="download.html">
-        <button class="button">looks good!</button>
-      </form>
-    </div>
-    <table border = "1">
-        {% for key,value in result.items() %}
-        <tr>
-          <th>
-            {{key}}
-          </th>
-          <td>
-              {{value}}
-          </td>
-        </tr>
-        {% endfor %}
-      </table>
-  </body>
-    <script>
+  <script type="text/javascript">
     // getting the data from the add assignments tab
     var your_data = {
         'dueDate' = '';
@@ -119,4 +61,55 @@
       document.getElementById("myForm").style.display = "none";
     }
     </script>
+  <body>
+  <h1 style="text-align: center; background-color: #bfe3b4; margin: -7px;"> Syllabi </h1><br>
+    <div style="float: left; width: 0px; height: 100px; position: relative" >
+    </div>
+      <div style="float: right; clear: right;"><iframe src={{url_for('static', filename='/result.pdf')}}
+        width="816" height="1056" scrolling="no" frameborder = "0" ></iframe>
+      </div>
+    <form action="upload.html"> <button class="button" >Reupload</button> <br><br> </form>
+    yeah dude, ur schedule is bad.  <br><br>
+
+    <button class="open-button" onclick="openForm()">Add assignments</button>
+
+  <div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Add Assignments</h1>
+      <label for="psw"><b>Due Date</b></label>
+      <input id="due" type="text" placeholder="Enter Due Date" name="due" required>
+
+      <label for="email"><b>Professor/Class</b></label>
+      <input id="prof" type="text" placeholder="Enter Professor/Class" name="professor" required>
+
+      <label for="email"><b>Name of Assignment</b></label>
+      <input id="name" type="text" placeholder="Name of Assignment" name="professor" required>
+
+      <label for="email"><b>Description</b></label>
+      <input id="textboxid" type="text" placeholder="Description" name="professor" required>
+
+      <button type="button" class="btn" onclick="closeForm()">Add</button>
+
+  </form>
+</div>
+
+    <div style="position:absolute; bottom:0px">
+      <form action="download.html">
+        <button class="button">looks good!</button>
+      </form>
+    </div>
+    <table border = "1">
+        {% for key,value in result.items() %}
+        <tr>
+          <th>
+            {{key}}
+          </th>
+          <td>
+              {{value}}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+  </body>
+
 </html>
