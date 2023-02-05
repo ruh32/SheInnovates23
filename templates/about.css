@@ -119,3 +119,6 @@ body {
   .blog{
     text-align: center;
   }
+  .blog button{
+    font-size: large;
+  }

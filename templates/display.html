@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Go to Top</button>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,72 @@
   <STYLE>A {text-decoration: none;} </STYLE>
   </head>
   <body>
-    <h1 style="text-align: center; background-color: #bfe3b4"> Syllabi </h1>
+<h1 style="text-align: center; background-color: #bfe3b4; margin: -7px;">Syllabi</h1>
+    </header>
     <div style="float: left; width: 0px; height: 100px; position: relative" > 
     </div>
-      <div style="float: right; clear: right;"><iframe src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
-        width="816" height="1056" scrolling="no" frameborder = "0" float="left"></iframe> 
+      <div style="float: right; clear: right;"><iframe src="realResumeRUCHI.pdf" 
+        width="816" height="1056" scrolling="no" frameborder = "0" ></iframe> 
       </div>
     <form action="upload.html"> <button class="button" >Reupload</button> <br><br> </form>
     yeah dude, ur schedule is bad.  <br><br>
-    <button class="button">add assignments</button>
+
+    <button class="open-button" onclick="openForm()">Add assignments</button>
+
+  <div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Add Assignments</h1>
+
+    <label for="psw"><b>Date Due</b></label>
+    <input type="password" placeholder="Enter Due Date" name="due" required>
+
+    <label for="email"><b>Professor/Class</b></label>
+    <input type="text" placeholder="Enter Professor/Class" name="professor" required>
+
+    <label for="email"><b>Name of Assignment</b></label>
+    <input type="text" placeholder="Name of Assignment" name="professor" required>
+
+    <label for="email"><b>Any Description</b></label>
+    <input type="text" placeholder="Description" name="professor" required>
+
+    <button type="submit" class="btn">Login</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
     <div style="position:absolute; bottom:0px">
       <form action="download.html">
         <button class="button">looks good!</button>
       </form>
     </div>
   </body>
+    <script>
+    // Get the button
+    let mybutton = document.getElementById("myBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    </script>
 </html>
